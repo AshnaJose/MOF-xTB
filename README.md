@@ -6,7 +6,7 @@
 
  # Citation
 
-Coming soon: 
+Coming soon!
 
 Please refer to the following papers if you use these codes/data:
 
