@@ -10,4 +10,4 @@ Coming soon:
 
 Please refer to the following papers if you use these codes/data:
 
-Ashna Jose, Aron Walsh, 
+Ashna Jose, Aron Walsh. Accurate Band Gap Prediction in Porous Materials using $\Delta$-Learning (2025)
