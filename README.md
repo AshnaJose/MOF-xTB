@@ -33,12 +33,6 @@ This code:
   - `scipy`
   - `pandas`
 
-Install dependencies (you can use a virtual environment):
-
-```bash
-pip install ase pymatgen matplotlib numpy scipy pandas
-
-
  # Citation
  
 Coming soon! :rocket:
