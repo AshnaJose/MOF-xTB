@@ -24,7 +24,6 @@ This code:
 
 - Python ≥ 3.7
 - [DFTB+](https://www.dftbplus.org/)
-- [dp_dos](https://github.com/dftbplus/dptools) (from DFTB+ tools)
 - Python packages:
   - `ase`
   - `pymatgen`
