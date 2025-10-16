@@ -9,6 +9,5 @@ This repository provides a Python-based workflow for running **GFN1-xTB** electr
 - Runs **GFN1-xTB** calculations using DFTB+
 - Computes and plots total Density of States (DOS)
 - Extracts Fermi level, CBM, VBM, and calculates band gap
-- Classifies material as **Metal**, **Semiconductor**, or **Insulator**
-- Saves results in a CSV file with structure metadata
+- Saves results with structure metadata
 - Saves high-resolution DOS plots
