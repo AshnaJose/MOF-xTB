@@ -2,7 +2,7 @@
 
 # Overview
 
- The GFN1-xTB method is applied to compute band gaps of a dataset of Metal-Organic Frameworks and train ML Models for accurate band gap prediction.
+This repository provides a Python-based workflow for running **GFN1-xTB** electronic structure calculations on a batch of **MOF (Metal–Organic Framework)** structures using **DFTB+**. It automates structure processing, DFTB+ input generation, band structure calculation, density of states (DOS), and band gap extraction. ML Models for accurate band gap prediction are then trained using the generated data.
 
  # MOF-xTB Workflow
 
