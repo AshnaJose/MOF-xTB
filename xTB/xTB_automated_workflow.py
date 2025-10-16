@@ -16,10 +16,14 @@ import csv
 from scipy.ndimage import gaussian_filter1d
 import pandas as pd
 
-
-# Running the MOF-xTB workflow for a set of structures stored in .cif formats
+# ===============================================================
+# MOF-xTB WORKFLOW: Processes CIF files and using GFN1-xTB method, computes DOS, Bandgap, and saves results/plots
+# ===============================================================
 
 def batch_process_cifs(cif_folder, output_folder):
+    """
+    Processes all .cif files in the specified folder using the MOF-xTB workflow.
+    """
     cif_files = list(Path(cif_folder).glob("*.cif"))
     print('Looking for cif files')
     if not cif_files:
@@ -35,11 +39,10 @@ def batch_process_cifs(cif_folder, output_folder):
             print(f":x: Error processing {cif.name}: {e}")
             
 
-# Main workflow
-
 def mof_xtb_workflow(cif_path, output_root):
-    
-    # Load CIF file
+    """
+    Main workflow: loads a CIF, runs GFN1-xTB, computes band gap, generates plots, and logs results.
+    """
     atoms = read(cif_path)
     num_atoms = len(atoms)
     print('Number of atoms: ',num_atoms)
@@ -57,12 +60,13 @@ def mof_xtb_workflow(cif_path, output_root):
     volume = atoms.get_volume()
     volume_per_atom = volume / len(atoms)
     
-    # Write SCF input and run DFTB+ calculation
+    # Write input and run DFTB+ calculation
     print('Writing DFTB+ input file...')
     write_dftb_input_scf(elements, scf_dir)
     print('Running GFN1-xTB calculation...')
     run_dftb(scf_dir)
-    
+
+    # Output file paths
     bandout_file = scf_dir / "band.out"
     detailed_file = scf_dir / "detailed.out"
     dp_dos_output_file = scf_dir / "dos_total.dat"
@@ -72,6 +76,7 @@ def mof_xtb_workflow(cif_path, output_root):
     with open(dp_dos_output_file, 'w') as f:
         pass 
 
+    # Process DOS if band.out exists
     if bandout_file.exists():
         print("Running dp_dos to generate DOS...")
         try:
@@ -100,9 +105,10 @@ def mof_xtb_workflow(cif_path, output_root):
         print(":warning: band.out not found for DOS generation.")
         
 
-# Function to wrote the DFTB+ input file, dftb_in.hsd
-
 def write_dftb_input_scf(elements, output_path):
+    """
+    Writes the DFTB+ input file (dftb_in.hsd) for SCF calculation using GFN1-xTB.
+    """
     with open(output_path / "dftb_in.hsd", "w") as f:
         f.write("Geometry = GenFormat {\n  <<< \"structure.gen\"\n}\n")
         f.write("Hamiltonian = xTB {\n  Method = GFN1-xTB\n")
@@ -119,9 +125,10 @@ def write_dftb_input_scf(elements, output_path):
         f.write("Analysis { CalculateForces = Yes }\n")
 
 
-# Command to run DFTB+ calculation
-
 def run_dftb(input_dir):
+    """
+    Runs DFTB+ in the specified directory.
+    """
     subprocess.run(
         ["dftb+"],
         cwd=input_dir,
@@ -130,6 +137,9 @@ def run_dftb(input_dir):
         
 
 def default_angular_momentum(el):
+    """
+    Returns default maximum angular momentum for element.
+    """
     elem = Element(el)
     if elem.is_alkali or elem.is_alkaline:
         return "s"
@@ -143,6 +153,9 @@ def default_angular_momentum(el):
 
 
 def compute_bandgap_from_dp_dos(dos_file, detailed_out_path, threshold=1e-4):
+    """
+    Calculates VBM, CBM and bandgap.
+    """
     fermi_level = parse_fermi_level(detailed_out_path)
     print('Fermi level:', fermi_level)
     data = np.loadtxt(dos_file)
@@ -169,7 +182,9 @@ def compute_bandgap_from_dp_dos(dos_file, detailed_out_path, threshold=1e-4):
 
 
 def parse_fermi_level(detailed_out_path):
-    """Extracts the Fermi level from the 'detailed.out'."""
+    """
+    Extracts the Fermi level from detailed.out file.
+    """
     fermi_level = None
     with open(detailed_out_path, 'r') as f:
         for line in f:
@@ -184,6 +199,9 @@ def parse_fermi_level(detailed_out_path):
     
 
 def plot_dp_dos(dos_file, detailed_out_path, output_path, mof_name, bandgap):
+    """
+    Plots the density of states and saves the figure.
+    """
     fermi_level = parse_fermi_level(detailed_out_path)
     data = np.loadtxt(dos_file)
     energies = data[:, 0] - fermi_level  # Shift to Fermi level
