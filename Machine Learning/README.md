@@ -16,7 +16,11 @@ Machine learning tools and notebooks for analyzing MOF properties.
 - `visualisation.ipynb` – produces key visual outputs such as:
   - Feature distribution histograms  
   - t-SNE plots for the dataset
-
-
-
+ 
+- `train_and_test.ipynb`
+  - Load feature and target datasets (including Δ-learning targets)
+  - Split data into training and testing sets 
+  - Train a **XGBoost Regressor** on the **Δ-learning** target, as well as direct target.  
+  - Evaluate model performance using metrics such as MAE and R².  
+  - Visualize predicted vs. actual Δ-learning values with parity plots.  
 
