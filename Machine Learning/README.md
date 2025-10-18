@@ -13,8 +13,6 @@ Machine learning tools and notebooks for analyzing MOF properties.
   - Compare xTB band gaps to reference DFT data
   - Prepare data for ML 
 
----
-
 - `visualisation.ipynb` – produces key visual outputs such as:
   - Feature distribution histograms  
   - t-SNE plots for the dataset
