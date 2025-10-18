@@ -17,7 +17,7 @@ Machine learning tools and notebooks for analyzing MOF properties.
   - Feature distribution histograms  
   - t-SNE plots for the dataset
  
-- `train_and_test.ipynb`
+- `training_and_testing.ipynb`
   - Load feature and target datasets (including Δ-learning targets)
   - Split data into training and testing sets 
   - Train a **XGBoost Regressor** on the **Δ-learning** target, as well as direct target.  
