@@ -17,8 +17,6 @@ Machine learning tools and notebooks for analyzing MOF properties.
 
 ---
 
-## 📁 Content
-
 - `visualisation.ipynb` – produces key visual outputs such as:
   - Feature distribution histograms  
   - t-SNE plots for the dataset
