@@ -9,13 +9,20 @@ Machine learning tools and notebooks for analyzing MOF properties.
 
 ## 📂 Contents
 
-- [`data_analysis.ipynb`](data_analysis.ipynb)  
+- `data_analysis.ipynb` 
   Exploratory Data Analysis notebook to:
   - Inspect and visualize the MOF dataset
-  - Compare xTB band gaps to refernce DFT data
+  - Compare xTB band gaps to reference DFT data
   - Prepare data for ML 
-  - Build baseline models
 
 ---
+
+## 📁 Content
+
+- `visualisation.ipynb` – produces key visual outputs such as:
+  - Feature distribution histograms  
+  - t-SNE plots for the dataset
+
+
 
 
