@@ -5,8 +5,6 @@
 
 Machine learning tools and notebooks for analyzing MOF properties.
 
----
-
 ## 📂 Contents
 
 - `data_analysis.ipynb` 
