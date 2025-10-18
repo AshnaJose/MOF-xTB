@@ -1,4 +1,6 @@
 # MOF-xTB
+[![Python](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/github/license/AshnaJose/MOF-xTB)](https://github.com/AshnaJose/MOF-xTB/blob/main/LICENSE)
 
 # Overview
 
